@@ -90,9 +90,11 @@ Se utilizaron particiones por Video ID y predicciones Out-of-Fold para reducir e
 
 URL configurada: **https://youtubenlp.streamlit.app/**
 
-**Estado al 25 de octubre de 2026:** el despliegue permanente aún requiere corregir/validar el entorno. La instancia mostraba `ModuleNotFoundError` al importar `joblib` y estaba usando Python 3.14.9. Se recomienda comprobar los logs completos y redeplegar con Python **3.13**, conservando el entorno de bibliotecas probado en Colab. Esta URL se incluye como destino del despliegue, no como certificación de que está operativa.
+**Estado al 25 de octubre de 2026:** aplicación desplegada y comprobada mediante capturas de la interfaz pública. El ensayo de cinco comentarios ingresados manualmente completó el análisis de sentimientos y la clasificación de desempeño (ALTO; probabilidad estimada 96,31 %). Una prueba de carga CSV también produjo resultados de sentimientos y desempeño (ALTO; 76,01 %). Ambas son **pruebas funcionales**, no evaluaciones de precisión del modelo.
 
-[Guía oficial de Streamlit para cambiar Python en Community Cloud](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/upgrade-python).
+**Precaución metodológica:** cada análisis de desempeño debe utilizar únicamente comentarios de **un mismo video**. Si un CSV combina comentarios de varios `Video ID`, la aplicación actualmente los procesa como si fueran un solo video, por lo que la clasificación agregada no debe interpretarse como válida para un video específico. Se recomienda filtrar por `Video ID` antes de cargar.
+
+El despliegue inicial falló con `ModuleNotFoundError` para `joblib` en un entorno Python 3.14.9; tras recrear el despliegue se pudo abrir y ejecutar la aplicación.
 
 ## Alcance y limitaciones
 
