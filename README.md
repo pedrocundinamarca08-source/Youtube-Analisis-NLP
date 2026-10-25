@@ -63,3 +63,40 @@ Universidad de Cundinamarca
 ## Nota metodológica
 
 Los comentarios son señales posteriores a la publicación del video. Por esta razón, el resultado se interpreta como una estimación del desempeño observado a partir de la reacción de la audiencia y no como un pronóstico previo a la publicación.
+
+
+## Reproducibilidad y ejecución local
+
+1. Instalar una versión compatible de Python (la prueba de Colab registró Python 3.13.16).
+2. Instalar las dependencias fijadas con `pip install -r requirements.txt`.
+3. Confirmar que `modelo_nlp_youtube_avance3.pkl` está en la misma carpeta que `app.py`.
+4. Ejecutar `streamlit run app.py`.
+5. Ingresar comentarios manualmente con sus likes o cargar un CSV que contenga `Comment` y opcionalmente `Likes`.
+
+El modelo clasifica el **desempeño observado**, no pronostica visualizaciones antes de la publicación.
+
+## Cuaderno Google Colab y evaluación (Avance IV)
+
+[Notebook principal Colabyoutube](https://colab.research.google.com/drive/1Up3pJZOrBTCWimw5BpdBKC8K31Uvtalr)
+
+La evaluación independiente en el notebook registra:
+- Sentimiento con Linear SVC: Macro F1 test de **0.6471** y Balanced Accuracy de **0.6563**.
+- Desempeño con Logistic Regression y sentimiento automático: F1 test de **0.8150** y ROC-AUC test de **0.8952**, evaluado sobre 374 videos.
+- Ablación: F1 CV de **0.8120** sin sentimiento y **0.8184** con sentimiento automático.
+
+Se utilizaron particiones por Video ID y predicciones Out-of-Fold para reducir el riesgo de fuga de información entre comentarios del mismo video. La aplicación se probó localmente y mediante un túnel público temporal.
+
+## Aplicación en Streamlit Community Cloud
+
+URL configurada: **https://youtubepln.streamlit.app/**
+
+**Estado al 25 de octubre de 2026:** el despliegue permanente aún requiere corregir/validar el entorno. La instancia mostraba `ModuleNotFoundError` al importar `joblib` y estaba usando Python 3.14.9. Se recomienda comprobar los logs completos y redeplegar con Python **3.13**, conservando el entorno de bibliotecas probado en Colab. Esta URL se incluye como destino del despliegue, no como certificación de que está operativa.
+
+[Guía oficial de Streamlit para cambiar Python en Community Cloud](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/upgrade-python).
+
+## Alcance y limitaciones
+
+- El modelo opera sobre una muestra del dataset YouTube Statistics de Kaggle; no cubre necesariamente todos los comentarios reales de cada video.
+- El procesamiento fue diseñado principalmente para comentarios en inglés.
+- Los indicadores offline no sustituyen pruebas de generalización en producción.
+- El proyecto académico se desarrolló de forma **individual**.
