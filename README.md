@@ -88,7 +88,7 @@ Se utilizaron particiones por Video ID y predicciones Out-of-Fold para reducir e
 
 ## Aplicación en Streamlit Community Cloud
 
-URL configurada: **https://youtubepln.streamlit.app/**
+URL configurada: **https://youtubenlp.streamlit.app/**
 
 **Estado al 25 de octubre de 2026:** el despliegue permanente aún requiere corregir/validar el entorno. La instancia mostraba `ModuleNotFoundError` al importar `joblib` y estaba usando Python 3.14.9. Se recomienda comprobar los logs completos y redeplegar con Python **3.13**, conservando el entorno de bibliotecas probado en Colab. Esta URL se incluye como destino del despliegue, no como certificación de que está operativa.
 
