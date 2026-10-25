@@ -79,6 +79,8 @@ El modelo clasifica el **desempeño observado**, no pronostica visualizaciones a
 
 [Notebook principal Colabyoutube](https://colab.research.google.com/drive/1Up3pJZOrBTCWimw5BpdBKC8K31Uvtalr)
 
+[Copia de cierre del Avance IV (Google Drive, archivo .ipynb)](https://drive.google.com/file/d/1NjvJDQJXz80sk8fi-nu-0K5wfTRIYL7Z/view?usp=drivesdk)
+
 La evaluación independiente en el notebook registra:
 - Sentimiento con Linear SVC: Macro F1 test de **0.6471** y Balanced Accuracy de **0.6563**.
 - Desempeño con Logistic Regression y sentimiento automático: F1 test de **0.8150** y ROC-AUC test de **0.8952**, evaluado sobre 374 videos.
